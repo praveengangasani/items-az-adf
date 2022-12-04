@@ -86,8 +86,25 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
 					"enableStaging": false
-				}
+				},
+				"outputs": [
+					{
+						"referenceName": "ITEMS_TGT",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"folder": {

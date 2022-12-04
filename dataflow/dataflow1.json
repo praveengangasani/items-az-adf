@@ -12,7 +12,15 @@
 					"name": "ITEMSSRC"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ITEMS_TGT",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -28,7 +36,17 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ITEMSSRC",
-				"ITEMSSRC derive(COMBINE_COLUMNS = {_col0_} + '-' + {_col1_} + '-' + {_col2_} + '-' + {_col3_}) ~> derivedColumn1"
+				"ITEMSSRC derive(COMBINE_COLUMNS = {_col0_} + '-' + {_col1_} + '-' + {_col2_} + '-' + {_col3_}) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Column_1 as string,",
+				"          Column_2 as string,",
+				"          Column_3 as string,",
+				"          Column_4 as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}

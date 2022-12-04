@@ -1,0 +1,36 @@
+{
+	"name": "ITEMS_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ITEMS_STORAGE_CONTAINER",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "items_source.csv",
+				"folderPath": "SOURCE",
+				"container": "items"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
